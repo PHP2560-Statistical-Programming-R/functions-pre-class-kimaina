@@ -132,13 +132,24 @@ for(i in 2:ncol(WCGS.new)) { # ignored the id column
 D. What should the mean and standard deviation of all your new standardized variables be? Test your prediction by running a loop
 
 ```{r}
-
+# The mean should be 0 and the standard deviation should be 1
 for(i in 2:ncol(WCGS.new)) {
   col.mean <- mean(WCGS.new[,i], na.rm = TRUE)
   col.sd <- sd(WCGS.new[,i], na.rm = TRUE)
   col.name <- names(WCGS.new)[i]
-  print(paste(i,col.name, "=> mean:", round(col.mean, 2), 
+  print(paste(i,col.name, "=> mean:", col.mean,
              "standard deviation: ",
+             col.sd, sep = " "))
+             
+}
+
+# If we round off the mean and standard deviation to 2 dp we arrive to our expectation.
+for(i in 2:ncol(WCGS.new)) {
+  col.mean <- mean(WCGS.new[,i], na.rm = TRUE)
+  col.sd <- sd(WCGS.new[,i], na.rm = TRUE)
+  col.name <- names(WCGS.new)[i]
+  print(paste(i,col.name, "=> mean (2dp):", round(col.mean, 2), 
+             "standard deviation (2dp)): ",
              round(col.sd,2), sep = " "))
              
 }
